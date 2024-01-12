@@ -1,3 +1,3 @@
-# viabirds-test-task
+# Viabirds-test-task
 
 # first commit
