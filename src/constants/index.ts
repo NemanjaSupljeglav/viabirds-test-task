@@ -12,10 +12,5 @@ export const navLinks: INavLink[] = [
     title: "favorites",
     path: "/favorites",
     icon: AiOutlineHome
-  },
-  {
-    title: "detail",
-    path: "/detail",
-    icon: AiOutlineHome
   }
 ];

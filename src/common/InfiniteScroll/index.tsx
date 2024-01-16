@@ -22,7 +22,6 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
         container?.scrollHeight
       ) {
         onScrollEnd();
-        //setPage(pre => pre + 1);
       }
     };
 

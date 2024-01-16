@@ -9,26 +9,25 @@ export const tmdbApi = createApi({
   endpoints: builder => ({
     getMovies: builder.query({
       query: ({
-        type,
         search,
         page,
-        id
+        rangeFrom,
+        rangeTo
       }: {
-        type?: string;
         page?: number;
         search?: string;
-        id?: number;
+        rangeFrom?: number;
+        rangeTo?: number;
       }) => {
         if (search) {
           return `search/movie?api_key=${API_KEY}&query=${search}&page=${page}`;
         }
-
-        return `movie/popular?api_key=${API_KEY}&page=${page}`;
+        return `discover/movie?api_key=${API_KEY}&page=${page}&vote_average.gte=${rangeFrom}&vote_average.lte=${rangeTo}`;
       }
     }),
 
     getMovie: builder.query({
-      query: ({ category, id }: { category: string; id: number }) =>
+      query: ({ id }: { id: number }) =>
         `movie/${id}?append_to_response=videos,credits&api_key=${API_KEY}`
     })
   })

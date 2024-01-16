@@ -1,3 +1,5 @@
-import Hero from "./Hero";
+import Casts from "./Casts";
+import Genre from "./Genre";
+import Videos from "./Videos";
 
-export {Hero};
+export { Casts, Genre, Videos };

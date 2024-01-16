@@ -11,7 +11,7 @@ const Search: React.FC<SearchProps> = ({ setSearch, search }) => {
   const [state, setState] = useState<string>("");
   const debounced = useDebouncedCallback(value => {
     setSearch(value);
-  }, 200);
+  }, 300);
   const handleChange = (e: any) => {
     debounced(e.target.value);
     setState(e.target.value);

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import MultiRangeSlider from "multi-range-slider-react";
+import "react-range-slider-input/dist/style.css";
 
 import { MovieCard, SkelatonLoader, InfiniteScroll } from "@/common";
 import { CatalogHeader, Search } from "./components";
@@ -11,12 +13,16 @@ const Catalog = () => {
   const [page, setPage] = useState<number>(1);
   const [moves, setMovies] = useState<IMovie[]>([]);
   const [search, setSearch] = useState<string>("");
+  const [rangeFrom, setRangeFrom] = useState<number>(0);
+  const [rangeTo, setRangeTo] = useState<number>(10);
 
   const { category } = useParams();
 
   const { data, isLoading, isFetching } = useGetMoviesQuery({
     page,
-    search
+    search,
+    rangeFrom,
+    rangeTo
   });
 
   useEffect(() => {
@@ -38,12 +44,16 @@ const Catalog = () => {
   const handleScrollEnd = () => {
     setPage(pre => pre + 1);
   };
-
+  const handleInput = (e: any) => {
+    setRangeFrom(e[0]);
+    setRangeTo(e[1]);
+  };
   return (
     <InfiniteScroll onScrollEnd={handleScrollEnd}>
-      {/* <CatalogHeader /> */}
+      <CatalogHeader />
       <div className={`${smallMaxWidth} `}>
         <Search setSearch={setSearch} search={search} />
+
         {isLoading ? (
           <SkelatonLoader isMoviesSliderLoader={false} />
         ) : (
@@ -51,7 +61,7 @@ const Catalog = () => {
             {moves?.map((movie, index) => (
               <div
                 key={index}
-                className="flex flex-col xs:gap-4 gap-2 xs:max-w-[170px] max-w-[144px] rounded-lg lg:mb-6 md:mb-5 sm:mb-4 mb-[10px] bg-[#4287f5]"
+                className="flex flex-col xs:gap-4 gap-2 xs:max-w-[170px] max-w-[144px] rounded-lg lg:mb-6 md:mb-5 sm:mb-4 mb-[10px]"
               >
                 <MovieCard movie={movie} />
               </div>
