@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { ApiProvider } from "@reduxjs/toolkit/query/react";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 import { tmdbApi } from "@/services/TMDB";
 import GlobalContextProvider from "@/context/globalContext";
@@ -11,12 +13,14 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
-    <ApiProvider api={tmdbApi}>
-      <GlobalContextProvider>
-        <LazyMotion features={domAnimation}>
-          <App />
-        </LazyMotion>
-      </GlobalContextProvider>
-    </ApiProvider>
+    <Provider store={store}>
+      <ApiProvider api={tmdbApi}>
+        <GlobalContextProvider>
+          <LazyMotion features={domAnimation}>
+            <App />
+          </LazyMotion>
+        </GlobalContextProvider>
+      </ApiProvider>
+    </Provider>
   </BrowserRouter>
 );

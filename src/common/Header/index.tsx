@@ -54,23 +54,16 @@ const Header = () => {
 
   return (
     <header
-      className={`md:py-[16px] py-[14.5px]  fixed top-0 left-0 w-full z-10 transition-all duration-50 header-bg--dark`}
+      className={`md:py-[16px] py-[24.5px]  fixed top-0 left-0 w-full z-10 transition-all duration-50 header-bg--dark`}
     >
       <nav
         className={cn(maxWidth, `flex justify-between flex-row items-center`)}
       >
         <p>Logo</p>
-        <div className=" hidden md:flex flex-row gap-8 items-center text-gray-600 dark:text-gray-300">
+        <div className=" hidden md:flex flex-row gap-8 items-center text-gray-300">
           <ul className="flex flex-row gap-8 capitalize text-[14.75px] font-medium">
             {navLinks.map((link: { title: string; path: string }) => {
-              return (
-                <HeaderNavItem
-                  key={link.title}
-                  link={link}
-                  isNotFoundPage={isNotFoundPage}
-                  showBg={isActive}
-                />
-              );
+              return <HeaderNavItem key={link.title} link={link} />;
             })}
           </ul>
         </div>

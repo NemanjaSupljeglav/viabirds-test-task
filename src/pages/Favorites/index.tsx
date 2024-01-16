@@ -3,7 +3,7 @@ import React from "react";
 const Favorites = () => {
   return (
     <>
-      <p>Favorites page</p>
+      <p className="bg-white h-[500px]">Favorites page</p>
     </>
   );
 };

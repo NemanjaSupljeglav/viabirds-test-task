@@ -20,15 +20,6 @@ export const getErrorMessage = (error: any) => {
   return errorMessage;
 };
 
-export const saveTheme = (theme: string) => {
-  localStorage.setItem("theme", theme);
-};
-
-export const getTheme = () => {
-  const theme = localStorage.getItem("theme");
-  return theme ? theme : "";
-};
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

@@ -1,22 +1,37 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { TMDB_API_BASE_URL } from "@/utils/config";
+import { API_KEY, TMDB_API_BASE_URL } from "@/utils/config";
 
 export const tmdbApi = createApi({
   reducerPath: "tmdbApi",
   baseQuery: fetchBaseQuery({ baseUrl: TMDB_API_BASE_URL }),
 
   endpoints: builder => ({
-    getShows: builder.query({
-      query: () => {
-        return `API`;
+    getMovies: builder.query({
+      query: ({
+        type,
+        search,
+        page,
+        id
+      }: {
+        type?: string;
+        page?: number;
+        search?: string;
+        id?: number;
+      }) => {
+        if (search) {
+          return `search/movie?api_key=${API_KEY}&query=${search}&page=${page}`;
+        }
+
+        return `movie/popular?api_key=${API_KEY}&page=${page}`;
       }
     }),
 
-    getShow: builder.query({
-      query: ({ category, id }: { category: string; id: number }) => `API`
+    getMovie: builder.query({
+      query: ({ category, id }: { category: string; id: number }) =>
+        `movie/${id}?append_to_response=videos,credits&api_key=${API_KEY}`
     })
   })
 });
 
-export const { useGetShowsQuery, useGetShowQuery } = tmdbApi;
+export const { useGetMoviesQuery, useGetMovieQuery } = tmdbApi;
