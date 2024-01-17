@@ -17,16 +17,21 @@ const Search: React.FC<SearchProps> = ({ setSearch, search }) => {
     setState(e.target.value);
   };
   return (
-    <div className="text-[14px] lg:py-10 md:pt-9 md:pb-10 sm:pt-8 sm:pb-10  pt-6 pb-8 flex flex-row items-center justify-center">
-      <input
-        type="text"
-        className="py-[8px] pl-[20px] pr-[36px]  rounded-full outline-none w-[300px] md:w-[340px]  shadow-md transition-all duration-300 focus:shadow-sm font-medium bg-[#302d3a] text-primary focus:bg-[#474550]"
-        onChange={handleChange}
-        value={state}
-        placeholder={`Search movies`}
-      />
-      <div className="text-[18px] -ml-[32px] text-[#ff0000] z-[1]">
-        <GoSearch />
+    <div className="flex flex-col items-center justify-center  mx-3">
+      <p className="text-[#d1d1d1] text-[13px]  w-[250px] md:w-[340px] ml-3">
+        Search
+      </p>
+      <div className="text-[14px]  flex flex-row items-center justify-center">
+        <input
+          type="text"
+          className="py-[8px] pl-[10px] pr-[36px]  rounded outline-none w-[250px] md:w-[340px]  shadow-md transition-all duration-300 focus:shadow-sm font-medium bg-[#302d3a] text-primary focus:bg-[#474550]"
+          onChange={handleChange}
+          value={state}
+          placeholder={`Batman`}
+        />
+        <div className="text-[18px]  text-[#ff0000] z-[1] ml-[-30px]">
+          <GoSearch />
+        </div>
       </div>
     </div>
   );

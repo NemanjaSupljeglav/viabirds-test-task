@@ -8,7 +8,7 @@ const CatalogHeader = () => {
         backgroundSize: "cover",
         backgroundPosition: "center"
       }}
-      className="lg:h-[140px] md:h-[132px] sm:h-[114px] h-[96px] relative"
+      className="lg:h-[140px] md:h-[132px] sm:h-[114px] h-[96px] relative mt-14"
     />
   );
 };

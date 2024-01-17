@@ -37,7 +37,7 @@ const MovieCard = ({ movie }: { movie: IMovie }) => {
           className="object-cover rounded-lg drop-shadow-md shadow-md group-hover:shadow-none group-hover:drop-shadow-none transition-all duration-300 ease-in-out
           zoomInEffect"
         />
-        <div className="absolute top-1 right-1 flex bg-[rgba(0,0,0,0.6)] justify-center items-center px-1 rounded-md	">
+        <div className="absolute top-1 left-1 flex bg-[rgba(0,0,0,0.6)] justify-center items-center px-1 rounded-md	">
           <p className="text-primary text-[14px] font-medium">
             {rate?.toFixed(1) || 0}
           </p>

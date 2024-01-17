@@ -1,22 +1,17 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import MultiRangeSlider from "multi-range-slider-react";
-import "react-range-slider-input/dist/style.css";
 
 import { MovieCard, SkelatonLoader, InfiniteScroll } from "@/common";
-import { CatalogHeader, Search } from "./components";
+import { CatalogHeader, Search, RatingInput } from "./components";
 import { useGetMoviesQuery } from "@/services/TMDB";
 import { smallMaxWidth } from "@/styles";
 import { IMovie } from "@/types";
 
-const Catalog = () => {
+const Movies = () => {
   const [page, setPage] = useState<number>(1);
   const [moves, setMovies] = useState<IMovie[]>([]);
   const [search, setSearch] = useState<string>("");
   const [rangeFrom, setRangeFrom] = useState<number>(0);
   const [rangeTo, setRangeTo] = useState<number>(10);
-
-  const { category } = useParams();
 
   const { data, isLoading, isFetching } = useGetMoviesQuery({
     page,
@@ -27,7 +22,13 @@ const Catalog = () => {
 
   useEffect(() => {
     setPage(1);
-  }, [category, search]);
+    setRangeFrom(0);
+    setRangeTo(10);
+  }, [search]);
+
+  useEffect(() => {
+    setSearch("");
+  }, [rangeFrom, rangeTo]);
 
   useEffect(() => {
     if (isLoading || isFetching) return;
@@ -44,15 +45,21 @@ const Catalog = () => {
   const handleScrollEnd = () => {
     setPage(pre => pre + 1);
   };
-  const handleInput = (e: any) => {
-    setRangeFrom(e[0]);
-    setRangeTo(e[1]);
-  };
+
   return (
     <InfiniteScroll onScrollEnd={handleScrollEnd}>
       <CatalogHeader />
-      <div className={`${smallMaxWidth} `}>
-        <Search setSearch={setSearch} search={search} />
+      <div className={`${smallMaxWidth}`}>
+        <div className="flex flex-wrap xs:gap-4 gap-[14px] justify-center lg:my-16 my-6 mr-6">
+          <Search setSearch={setSearch} search={search} />
+
+          <RatingInput
+            rangeFrom={rangeFrom}
+            setRangeFrom={setRangeFrom}
+            rangeTo={rangeTo}
+            setRangeTo={setRangeTo}
+          />
+        </div>
 
         {isLoading ? (
           <SkelatonLoader isMoviesSliderLoader={false} />
@@ -80,4 +87,4 @@ const Catalog = () => {
   );
 };
 
-export default Catalog;
+export default Movies;
