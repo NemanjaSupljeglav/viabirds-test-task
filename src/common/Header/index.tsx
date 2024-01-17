@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineStepForward } from "react-icons/ai";
 
 import HeaderNavItem from "./HeaderNavItem";
 
@@ -31,7 +31,15 @@ const Header = () => {
       <nav
         className={cn(maxWidth, `flex justify-between flex-row items-center`)}
       >
-        <p>Logo</p>
+        <div className="flex flex-row">
+          <div className="text-[red] text-[25px]">
+            <AiOutlineStepForward />
+          </div>
+
+          <p className="active text-gray-300 hover:text-secColor font-semibold ml-1">
+            ViaBirds
+          </p>
+        </div>
         <div className=" hidden md:flex flex-row gap-8 items-center text-gray-300">
           <ul className="flex flex-row gap-8 capitalize text-[14.75px] font-medium">
             {navLinks.map((link: { title: string; path: string }) => {
