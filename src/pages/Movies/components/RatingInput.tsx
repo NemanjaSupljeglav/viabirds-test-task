@@ -69,7 +69,7 @@ const RatingInput: React.FC<RatingProps> = ({
             placeholder="0"
             max={rangeTo}
           />
-          <div className="flex flex-col ml-[-20px]">
+          <div className="flex flex-col ml-[-20px] mt-1">
             <div
               className="text-[14px]  text-[#ff0000] h-[15px]   rounded-full cursor-pointer"
               onClick={() => handlePressRangeFrom(true)}
@@ -96,7 +96,7 @@ const RatingInput: React.FC<RatingProps> = ({
             value={rangeTo}
             placeholder="10"
           />
-          <div className="flex flex-col ml-[-20px]">
+          <div className="flex flex-col ml-[-20px] mt-1">
             <div
               className="text-[14px]  text-[#ff0000] h-[15px]   rounded-full cursor-pointer"
               onClick={() => handlePressRangeTo(true)}

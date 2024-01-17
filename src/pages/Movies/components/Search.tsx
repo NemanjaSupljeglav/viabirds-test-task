@@ -4,10 +4,9 @@ import { useDebouncedCallback } from "use-debounce";
 
 interface SearchProps {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
-  search: string;
 }
 
-const Search: React.FC<SearchProps> = ({ setSearch, search }) => {
+const Search: React.FC<SearchProps> = ({ setSearch }) => {
   const [state, setState] = useState<string>("");
   const debounced = useDebouncedCallback(value => {
     setSearch(value);
@@ -17,7 +16,7 @@ const Search: React.FC<SearchProps> = ({ setSearch, search }) => {
     setState(e.target.value);
   };
   return (
-    <div className="flex flex-col items-center justify-center  mx-3">
+    <div className="flex flex-col items-center justify-center mx-2">
       <p className="text-[#d1d1d1] text-[13px]  w-[250px] md:w-[340px] ml-3">
         Search
       </p>
@@ -27,9 +26,9 @@ const Search: React.FC<SearchProps> = ({ setSearch, search }) => {
           className="py-[8px] pl-[10px] pr-[36px]  rounded outline-none w-[250px] md:w-[340px]  shadow-md transition-all duration-300 focus:shadow-sm font-medium bg-[#302d3a] text-primary focus:bg-[#474550]"
           onChange={handleChange}
           value={state}
-          placeholder={`Batman`}
+          placeholder="Search for a movie"
         />
-        <div className="text-[18px]  text-[#ff0000] z-[1] ml-[-30px]">
+        <div className="text-[18px]  text-[#ff0000] z-[1] ml-[-30px] pt-1">
           <GoSearch />
         </div>
       </div>

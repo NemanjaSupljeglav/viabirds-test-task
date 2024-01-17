@@ -49,7 +49,7 @@ const MovieCard = ({ movie }: { movie: IMovie }) => {
               e.preventDefault();
               showTrailer();
             }}
-            className="text-[16px]  text-[#ff0000] scale-[0.4] group-hover:scale-100 transition-all duration-300 flex justify-center items-center	mt-[120%]  mx-3 rounded-full bg-glowLight  hover:bg-[rgba(0,0,0,0.6)]  px-2"
+            className="text-[16px]  text-[#ff0000] scale-[0.4] group-hover:scale-100 transition-all duration-300 flex justify-center items-center	mt-[120%]  mx-3 rounded-full bg-glowLight  hover:bg-[rgba(0,0,0,0.6)] hover:mb-1  px-2"
           >
             <p className="mr-2 text-primary">Watch Trailer</p> <FaYoutube />
           </div>

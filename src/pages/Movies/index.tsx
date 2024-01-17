@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { MovieCard, SkelatonLoader, InfiniteScroll } from "@/common";
+import { MovieCard, SkelatonLoader, InfiniteScroll, Error } from "@/common";
 import { CatalogHeader, Search, RatingInput } from "./components";
 import { useGetMoviesQuery } from "@/services/TMDB";
 import { smallMaxWidth } from "@/styles";
@@ -13,7 +13,7 @@ const Movies = () => {
   const [rangeFrom, setRangeFrom] = useState<number>(0);
   const [rangeTo, setRangeTo] = useState<number>(10);
 
-  const { data, isLoading, isFetching } = useGetMoviesQuery({
+  const { data, isLoading, isFetching, isError } = useGetMoviesQuery({
     page,
     search,
     rangeFrom,
@@ -45,13 +45,15 @@ const Movies = () => {
   const handleScrollEnd = () => {
     setPage(pre => pre + 1);
   };
-
+  if (isError) {
+    return <Error error="Unable to fetch the movies! " />;
+  }
   return (
     <InfiniteScroll onScrollEnd={handleScrollEnd}>
       <CatalogHeader />
       <div className={`${smallMaxWidth}`}>
         <div className="flex flex-wrap xs:gap-4 gap-[14px] justify-center lg:my-16 my-6 mr-6">
-          <Search setSearch={setSearch} search={search} />
+          <Search setSearch={setSearch} />
 
           <RatingInput
             rangeFrom={rangeFrom}

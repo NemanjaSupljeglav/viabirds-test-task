@@ -1,4 +1,3 @@
-import { useCallback, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { IoMdClose } from "react-icons/io";
 
@@ -8,39 +7,20 @@ import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useMotion } from "@/hooks/useMotion";
 
 const VideoModal = () => {
-  const { videoId, toggleModal, isModalOpen, setVideoId } = useGlobalContext();
+  const { videoId, toggleModal, isVideoModalOpen, setVideoId } =
+    useGlobalContext();
   const { zoomIn } = useMotion();
 
-  const closeModal = useCallback(() => {
+  const closeModal = () => {
     toggleModal();
     setVideoId("");
-  }, [setVideoId, toggleModal]);
+  };
 
   const { ref } = useOnClickOutside(closeModal);
 
-  useEffect(() => {
-    const body = document.body;
-    const rootNode = document.documentElement;
-    if (isModalOpen) {
-      const scrollTop = rootNode.scrollTop;
-      body.style.top = `-${scrollTop}px`;
-      body.classList.add("no-scroll");
-
-      return;
-    }
-
-    const top = parseFloat(body.style.top) * -1;
-    body.classList.remove("no-scroll");
-    if (top) {
-      rootNode.style.scrollBehavior = "auto";
-      rootNode.scrollTop = top;
-      rootNode.style.scrollBehavior = "smooth";
-    }
-  }, [isModalOpen]);
-
   return (
     <AnimatePresence>
-      {isModalOpen && (
+      {isVideoModalOpen && (
         <Overlay className="flex items-center justify-center ">
           <m.div
             variants={zoomIn(0.9, 0.3)}
