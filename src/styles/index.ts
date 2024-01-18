@@ -8,7 +8,7 @@ export const listItem =
 export const sideBarHeading =
   "xs:mb-[6px] mb-1 font-nunito font-bold  text-[15.75px] dark:text-gray-50 text-[#333]";
 
-export const activeListItem = "text-secColor  font-semibold";
+export const activeListItem = "text-[#f2f0f0]  font-semibold";
 
 export const watchBtn =
   "sm:text-base xs:text-[14.75px] text-[13.75px]  xs:py-2 py-[6px] sm:px-6 xs:px-5 px-[18px] hover:-translate-y-[2px] transition-all duration-300 active:translate-y-[1px] rounded-full text-secColor font-medium";

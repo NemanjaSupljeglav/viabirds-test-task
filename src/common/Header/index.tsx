@@ -8,6 +8,7 @@ import { useGlobalContext } from "@/context/globalContext";
 import { maxWidth, textColor } from "@/styles";
 import { navLinks } from "@/constants";
 import { cn } from "@/utils/helper";
+import { INavLink } from "@/types";
 
 const Header = () => {
   const { setShowSidebar } = useGlobalContext();
@@ -42,8 +43,8 @@ const Header = () => {
         </div>
         <div className=" hidden md:flex flex-row gap-8 items-center text-gray-300">
           <ul className="flex flex-row gap-8 capitalize text-[14.75px] font-medium">
-            {navLinks.map((link: { title: string; path: string }) => {
-              return <HeaderNavItem key={link.title} link={link} />;
+            {navLinks.map((link: any, index) => {
+              return <HeaderNavItem link={link} key={index} />;
             })}
           </ul>
         </div>

@@ -1,10 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { INavLink } from "@/types";
-import { listItem, activeListItem } from "@/styles";
 import { cn } from "@/utils/helper";
 
 interface SidebarNavItemProps {
-  link: INavLink;
+  link: any;
   closeSideBar: () => void;
 }
 
@@ -14,7 +12,10 @@ const SidebarNavItem = ({ link, closeSideBar }: SidebarNavItemProps) => {
       <NavLink
         to={link.path}
         className={({ isActive }) => {
-          return cn(listItem, isActive && activeListItem);
+          return cn(
+            "flex flex-row gap-3 py-1 rounded-md px-[10px] items-center w-full text-primary  transition-all duration-300 font-nunito font-semibold ",
+            isActive && "text-[red] "
+          );
         }}
         onClick={closeSideBar}
       >

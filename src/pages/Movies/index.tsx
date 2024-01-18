@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 
-import { MovieCard, SkelatonLoader, InfiniteScroll, Error } from "@/common";
-import { CatalogHeader, Search, RatingInput } from "./components";
+import { SkelatonLoader, InfiniteScroll, Error } from "@/common";
+import { CatalogHeader, Search, MovieCard, RatingInput } from "./components";
 import { useGetMoviesQuery } from "@/services/TMDB";
-import { smallMaxWidth } from "@/styles";
 import { IMovie } from "@/types";
 
 const Movies = () => {
@@ -13,7 +12,7 @@ const Movies = () => {
   const [rangeFrom, setRangeFrom] = useState<number>(0);
   const [rangeTo, setRangeTo] = useState<number>(10);
 
-  const { data, isLoading, isFetching, isError } = useGetMoviesQuery({
+  const { data, isLoading, isError } = useGetMoviesQuery({
     page,
     search,
     rangeFrom,
@@ -31,8 +30,7 @@ const Movies = () => {
   }, [rangeFrom, rangeTo]);
 
   useEffect(() => {
-    if (isLoading || isFetching) return;
-
+    if (isLoading) return;
     if (data?.results) {
       if (page > 1) {
         setMovies(prev => [...prev, ...data.results]);
@@ -40,7 +38,7 @@ const Movies = () => {
         setMovies([...data.results]);
       }
     }
-  }, [data, isFetching, isLoading, page]);
+  }, [data, isLoading, page]);
 
   const handleScrollEnd = () => {
     setPage(pre => pre + 1);
@@ -51,10 +49,9 @@ const Movies = () => {
   return (
     <InfiniteScroll onScrollEnd={handleScrollEnd}>
       <CatalogHeader />
-      <div className={`${smallMaxWidth}`}>
+      <div className="max-w-[940px] mx-auto md:px-8 sm:px-6 px-4 xl:px-0">
         <div className="flex flex-wrap xs:gap-4 gap-[14px] justify-center lg:my-16 my-6 mr-6">
           <Search setSearch={setSearch} />
-
           <RatingInput
             rangeFrom={rangeFrom}
             setRangeFrom={setRangeFrom}
@@ -67,22 +64,21 @@ const Movies = () => {
           <SkelatonLoader isMoviesSliderLoader={false} />
         ) : (
           <div className="flex flex-wrap xs:gap-4 gap-[14px] justify-center">
-            {moves?.map((movie, index) => (
-              <div
-                key={index}
-                className="flex flex-col xs:gap-4 gap-2 xs:max-w-[170px] max-w-[144px] rounded-lg lg:mb-6 md:mb-5 sm:mb-4 mb-[10px]"
-              >
-                <MovieCard movie={movie} />
+            {moves.length > 0 ? (
+              moves?.map((movie, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col xs:gap-4 gap-2 xs:max-w-[170px] max-w-[144px] rounded-lg lg:mb-6 md:mb-5 sm:mb-4 mb-[10px]"
+                >
+                  <MovieCard movie={movie} />
+                </div>
+              ))
+            ) : (
+              <div className="text-[#d1d1d1] text-[14px] mt-[-40] bg-warning p-2 rounded-lg	px-4">
+                There are no movies available for the requested input.
               </div>
-            ))}
+            )}
           </div>
-        )}
-
-        {isFetching && (
-          <SkelatonLoader
-            isMoviesSliderLoader={false}
-            className="md:pt-8 sm:pt-7 pt-6"
-          />
         )}
       </div>
     </InfiniteScroll>

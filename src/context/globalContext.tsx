@@ -1,42 +1,6 @@
 import React, { useContext, useState } from "react";
 import { API_KEY, TMDB_API_BASE_URL } from "@/utils/config";
 import { IMovie } from "@/types";
-const fakeMovies = [
-  {
-    adult: false,
-    backdrop_path: "/f1AQhx6ZfGhPZFTVKgxG91PhEYc.jpg",
-    genre_ids: [],
-    id: 753342,
-    original_language: "en",
-    original_title: "Napoleon",
-    overview:
-      "An epic that details the checkered rise and fall of French Emperor Napoleon Bonaparte and his relentless journey to power through the prism of his addictive, volatile relationship with his wife, Josephine.",
-    popularity: 2367.318,
-    poster_path: "/jE5o7y9K6pZtWNNMEw3IdpHuncR.jpg",
-    release_date: "2023-11-22",
-    title: "Napoleon",
-    video: false,
-    vote_average: 6.5,
-    vote_count: 1193
-  },
-  {
-    adult: false,
-    backdrop_path: "/dvNrgldueQciabkYmlCnyhmaPoO.jpg",
-    genre_ids: [],
-    id: 899445,
-    original_language: "en",
-    original_title: "Deep Fear",
-    overview:
-      "A solo trip aboard a yacht takes a terrifying turn when a woman encounters three drug traffickers clinging to the shattered remains of a boat. They soon force her to dive into shark-infested waters to retrieve kilos of cocaine from the sunken wreck.",
-    popularity: 1143.446,
-    poster_path: "/ruujFw7J0Nd3BSjbN3QODym82Qs.jpg",
-    release_date: "2023-10-18",
-    title: "Deep Fear",
-    video: false,
-    vote_average: 4.9,
-    vote_count: 48
-  }
-];
 
 const context = React.createContext({
   videoId: "",
@@ -47,7 +11,9 @@ const context = React.createContext({
   showSidebar: false,
   setShowSidebar: (prevValue: boolean) => {},
   favoriteMovies: [] as IMovie[],
-  setFavoriteMovies: (prevValue: IMovie[]) => {}
+  setFavoriteMovies: (prevValue: IMovie[]) => {},
+  addFavoriteMovie: (movie: IMovie) => {},
+  removeFavoriteMovie: (id: number) => {}
 });
 
 interface Props {
@@ -58,7 +24,7 @@ const GlobalContextProvider = ({ children }: Props) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [videoId, setVideoId] = useState("");
   const [isVideoModalOpen, setIsVideoVideoModalOpen] = useState(false);
-  const [favoriteMovies, setFavoriteMovies] = useState<any>(fakeMovies);
+  const [favoriteMovies, setFavoriteMovies] = useState<IMovie[]>([]);
 
   const toggleModal = () => {
     setIsVideoVideoModalOpen(prev => !prev);
@@ -75,7 +41,13 @@ const GlobalContextProvider = ({ children }: Props) => {
       console.error(error.message);
     }
   };
-
+  const addFavoriteMovie = (movie: IMovie) => {
+    setFavoriteMovies([...favoriteMovies, movie]);
+  };
+  const removeFavoriteMovie = (id: number) => {
+    let moves = favoriteMovies?.filter(move => Number(move.id) !== id);
+    setFavoriteMovies(moves);
+  };
   return (
     <context.Provider
       value={{
@@ -87,7 +59,9 @@ const GlobalContextProvider = ({ children }: Props) => {
         showSidebar,
         setShowSidebar,
         favoriteMovies,
-        setFavoriteMovies
+        setFavoriteMovies,
+        addFavoriteMovie,
+        removeFavoriteMovie
       }}
     >
       {children}

@@ -1,10 +1,5 @@
-export interface ITheme {
-  title: string;
-  icon: IconType;
-}
-
 export interface INavLink extends ITheme {
-  path: string;
+  path: { title: string };
 }
 
 export interface IMovie {

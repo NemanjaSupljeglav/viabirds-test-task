@@ -1,9 +1,9 @@
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Poster } from "@/common";
+import { Poster, Button } from "@/common";
 import { useGlobalContext } from "@/context/globalContext";
-import { mainHeading, maxWidth, paragraph, watchBtn } from "@/styles";
+import { mainHeading, maxWidth, paragraph } from "@/styles";
 import { IMovie } from "@/types";
 import { cn } from "@/utils/helper";
 
@@ -18,12 +18,12 @@ const MovieCard = ({ movie }: { movie: IMovie }) => {
     id
   } = movie;
 
-  const showTrailer = () => {
+  const handleTrailer = () => {
     getTrailerId(id);
     toggleModal();
   };
 
-  const handleWatchNow = () => {
+  const handleDetails = () => {
     navigate(`/details/${id}`);
   };
 
@@ -40,26 +40,16 @@ const MovieCard = ({ movie }: { movie: IMovie }) => {
           {overview.length > 180 ? `${overview.slice(0, 180)}...` : overview}
         </p>
         <div className="flex flex-row items-center  gap-4 sm:mt-6 xs:mt-5 mt-[18px] ">
-          <button
-            type="button"
-            name="watch-trailer"
-            className={cn(watchBtn, `text-shadow watch-trailer`)}
-            onClick={showTrailer}
-          >
-            Watch trailer
-          </button>
-          <button
-            type="button"
-            name="watch-now"
-            className={cn(
-              watchBtn,
-              ` bg-[#ff0000] shadow-glow
-             text-shadow text-secColor `
-            )}
-            onClick={handleWatchNow}
-          >
-            Watch now
-          </button>
+          <Button
+            title={"Watch Trailer"}
+            className="w-full"
+            onClick={handleTrailer}
+          />
+          <Button
+            title={"Check Details"}
+            className="w-full"
+            onClick={handleDetails}
+          />
         </div>
       </div>
 

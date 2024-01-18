@@ -1,8 +1,9 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import { FaYoutube, FaStar } from "react-icons/fa";
+import { BsBookmarkCheckFill, BsBookmarkDash } from "react-icons/bs";
 
-import Image from "../Image";
+import Image from "@/common/Image";
 import { useGlobalContext } from "@/context/globalContext";
 import { IMovie } from "@/types";
 import { useMediaQuery } from "usehooks-ts";
@@ -43,7 +44,7 @@ const MovieCard = ({ movie }: { movie: IMovie }) => {
           </p>
           <FaStar color="yellow" className="mb-[0.5px] ml-1" />
         </div>
-        <div className="absolute top-0 left-0 w-[170px]  h-full group-hover:opacity-100 opacity-0 bg-[rgba(0,0,0,0.6)] transition-all duration-300 rounded-lg flex items-center justify-center">
+        <div className="absolute top-0 left-0 w-[170px]  h-full group-hover:opacity-100 opacity-0 bg-[rgba(0,0,0,0.6)] transition-all duration-300 rounded-lg flex flex-col items-center justify-center">
           <div
             onClick={e => {
               e.preventDefault();
