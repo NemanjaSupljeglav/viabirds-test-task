@@ -1,5 +1,5 @@
   <p >
-This is a simple movie application built with React JS, Typescript, and Tailwind CSS, <br/> which allows users to search and view  movies.
+Welcome to the Movie Explorer app documentation! This application is built using React with TypeScript, Tailwind CSS, and Vite. The Movie Explorer allows users to search for movies, filter them based on their ratings, view detailed information, and even watch trailers. Additionally, users can create accounts locally and add their favorite movies to a personalized favorites list.
   </p>
 
 <br/>
@@ -9,14 +9,14 @@ This is a simple movie application built with React JS, Typescript, and Tailwind
 
 1. **Search Movies and TV Series:**
 
-   1. Users can easily search, filter and add to favorite movies.
-   2. View trailers to get a sneak peek before watching.
-
-2. **Detailed Movie Information:**
-
-   1. Access comprehensive information about a selected movie, including details about the cast, crew, and more.
-
-<br/>
+   1. Utilize the powerful search functionality to find movies based on titles or keywords.
+   2. The search results dynamically update as you type, providing a seamless and efficient user experience.
+   3. Easily filter movies based on their ratings, allowing you to discover films that match your preferences.
+   4. Access comprehensive details about each movie, including cast, crew, release date, and synopsis.
+   5. Watch trailers directly from the movie details page, enhancing your overall viewing experience.
+   6. Create a personalized account to unlock additional features and maintain a unique identity within the app.
+   7. Build and manage your list of favorite movies locally.
+   8. Add and remove movies from your favorites list with just a few clicks.
 
 ## Getting Started
 
@@ -70,3 +70,9 @@ Make sure you have all the necessary prerequisites installed on your system. Fol
 This will start the development server and open the movie application in your default web browser.
 
 <br/>
+
+## Demo
+
+This demo is for exploration purposes only and does not store any real user data. The information you enter, including account details and favorite movies, is temporary and will not persist between sessions. Enjoy your exploration of the Movie Explorer app!
+
+URL: <a href="https://link/">View Demo</a>
