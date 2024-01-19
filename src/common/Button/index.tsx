@@ -4,10 +4,11 @@ import { cn } from "@/utils/helper";
 interface ButtonProps {
   title: string;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
 }
 
-const Button: React.FC<ButtonProps> = ({ title, className, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ title, className, onClick, type }) => {
   return (
     <button
       className={cn(
@@ -15,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({ title, className, onClick }) => {
         className
       )}
       onClick={onClick}
+      type={type}
     >
       {title}
     </button>

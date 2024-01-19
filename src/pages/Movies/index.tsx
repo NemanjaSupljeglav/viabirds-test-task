@@ -74,7 +74,7 @@ const Movies = () => {
                 </div>
               ))
             ) : (
-              <div className="text-[#d1d1d1] text-[14px] mt-[-40] bg-warning p-2 rounded-lg	px-4">
+              <div className="text-[#d1d1d1] text-[14px]  bg-warning p-2 rounded-lg	px-4">
                 There are no movies available for the requested input.
               </div>
             )}

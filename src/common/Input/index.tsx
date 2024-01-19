@@ -1,46 +1,34 @@
 import React from "react";
-import { useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { cn } from "@/utils/helper";
 
-interface InputProps {
-  src: string;
-  className: string;
-  alt: string;
-  width: string | number;
-  height: string | number;
-  zoomInEffect?: boolean;
+interface SearchProps {
+  onChange: React.Dispatch<React.SetStateAction<string>>;
+  value: string | number;
+  className?: string;
+  label?: string;
+  placeholder?: string;
 }
 
-const Input: React.FC<InputProps> = ({
-  src,
+const Search: React.FC<SearchProps> = ({
+  onChange,
+  value,
   className,
-  width,
-  alt,
-  height,
-  zoomInEffect = false
+  label,
+  placeholder
 }) => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  const handleLoad = () => {
-    setIsImageLoaded(true);
-  };
-
   return (
-    <LazyLoadImage
-      src={src}
-      alt={alt}
-      height={height}
-      width={width}
-      className={cn(
-        className,
-        !isImageLoaded
-          ? `opacity-0 ${zoomInEffect ? "scale-95" : ""}`
-          : `opacity-100 ${zoomInEffect ? "scale-100" : ""}`
-      )}
-      afterLoad={handleLoad}
-    />
+    <div className={className}>
+      <p className="text-[#d1d1d1] text-[13px]">{label}</p>
+      <div className="text-[14px]  flex flex-row items-center justify-center">
+        <input
+          type="text"
+          className="py-[8px] pl-[10px] pr-[36px]  rounded outline-none w-full  shadow-md transition-all duration-300 focus:shadow-sm font-medium bg-[#302d3a] text-primary focus:bg-[#474550]"
+          onChange={e => onChange(e.target.value)}
+          value={value}
+          placeholder={placeholder}
+        />
+      </div>
+    </div>
   );
 };
 
-export default Input;
+export default Search;

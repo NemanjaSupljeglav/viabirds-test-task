@@ -19,7 +19,6 @@ const RatingInput: React.FC<RatingProps> = ({
   ) => {
     const value = Number(event.target.value);
 
-    console.log("value:", value, "rangeTo:", rangeTo, "rangeFrom:", rangeFrom);
     if (value >= 0 && value <= 10) {
       setRangeFrom(value);
     }
@@ -31,7 +30,6 @@ const RatingInput: React.FC<RatingProps> = ({
   const handleRangeToChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value);
 
-    console.log("value:", value, "rangeTo:", rangeFrom);
     if (value >= 0 && value <= 10) {
       setRangeTo(value);
     }

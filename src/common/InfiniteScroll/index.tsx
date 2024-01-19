@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
+import { cn } from "@/utils/helper";
+
 interface InfiniteScrollProps {
   className?: string;
   onScrollEnd: () => void;
@@ -34,7 +36,10 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   }, []);
 
   return (
-    <div ref={containerRef} className="h-[1000px]  overflow-y-auto">
+    <div
+      ref={containerRef}
+      className={cn(`h-[1000px]  overflow-y-auto`, className)}
+    >
       {children}
     </div>
   );

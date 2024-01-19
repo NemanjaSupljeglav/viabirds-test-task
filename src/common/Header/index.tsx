@@ -1,29 +1,14 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineStepForward } from "react-icons/ai";
 
 import HeaderNavItem from "./HeaderNavItem";
 
 import { useGlobalContext } from "@/context/globalContext";
-import { maxWidth, textColor } from "@/styles";
+import { maxWidth } from "@/styles";
 import { navLinks } from "@/constants";
 import { cn } from "@/utils/helper";
-import { INavLink } from "@/types";
 
 const Header = () => {
   const { setShowSidebar } = useGlobalContext();
-
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const [isNotFoundPage, setIsNotFoundPage] = useState<boolean>(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname.split("/").length > 3) {
-      setIsNotFoundPage(true);
-    } else {
-      setIsNotFoundPage(false);
-    }
-  }, [location.pathname]);
 
   return (
     <header
@@ -52,12 +37,7 @@ const Header = () => {
         <button
           type="button"
           name="menu"
-          className={cn(
-            `inline-block text-[22.75px] md:hidden  transition-all duration-300`,
-            isNotFoundPage || isActive
-              ? `${textColor} dark:hover:text-secColor hover:text-black `
-              : ` dark:hover:text-secColor text-secColor`
-          )}
+          className={`inline-block text-[22.75px] md:hidden  transition-all duration-300 dark:hover:text-secColor text-secColor`}
           onClick={() => setShowSidebar(true)}
         >
           <AiOutlineMenu />

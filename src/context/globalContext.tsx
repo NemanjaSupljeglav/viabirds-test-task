@@ -1,4 +1,7 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import { API_KEY, TMDB_API_BASE_URL } from "@/utils/config";
 import { IMovie } from "@/types";
 
@@ -13,7 +16,9 @@ const context = React.createContext({
   favoriteMovies: [] as IMovie[],
   setFavoriteMovies: (prevValue: IMovie[]) => {},
   addFavoriteMovie: (movie: IMovie) => {},
-  removeFavoriteMovie: (id: number) => {}
+  removeFavoriteMovie: (id: number) => {},
+  user: "",
+  createUser: (movie: string) => {}
 });
 
 interface Props {
@@ -21,15 +26,19 @@ interface Props {
 }
 
 const GlobalContextProvider = ({ children }: Props) => {
-  const [showSidebar, setShowSidebar] = useState(false);
-  const [videoId, setVideoId] = useState("");
-  const [isVideoModalOpen, setIsVideoVideoModalOpen] = useState(false);
+  const [showSidebar, setShowSidebar] = useState<boolean>(false);
+  const [videoId, setVideoId] = useState<string>("");
+  const [isVideoModalOpen, setIsVideoVideoModalOpen] = useState<boolean>(false);
   const [favoriteMovies, setFavoriteMovies] = useState<IMovie[]>([]);
+  const [user, setUser] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const toggleModal = () => {
     setIsVideoVideoModalOpen(prev => !prev);
   };
 
+  //Trailer
   const getTrailerId = async (id: number | string) => {
     try {
       const res = await fetch(
@@ -41,6 +50,8 @@ const GlobalContextProvider = ({ children }: Props) => {
       console.error(error.message);
     }
   };
+
+  //Favorite
   const addFavoriteMovie = (movie: IMovie) => {
     setFavoriteMovies([...favoriteMovies, movie]);
   };
@@ -48,6 +59,18 @@ const GlobalContextProvider = ({ children }: Props) => {
     let moves = favoriteMovies?.filter(move => Number(move.id) !== id);
     setFavoriteMovies(moves);
   };
+
+  //Create User
+  const createUser = (user: string) => {
+    if (user) {
+      setUser(user);
+      toast.success(`Welcome ${user}! Choose your favorite movies.`);
+      navigate("/");
+    } else {
+      toast.error("Please enter Your name.");
+    }
+  };
+
   return (
     <context.Provider
       value={{
@@ -61,7 +84,9 @@ const GlobalContextProvider = ({ children }: Props) => {
         favoriteMovies,
         setFavoriteMovies,
         addFavoriteMovie,
-        removeFavoriteMovie
+        removeFavoriteMovie,
+        user,
+        createUser
       }}
     >
       {children}

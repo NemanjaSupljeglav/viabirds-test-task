@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 
 import { Header, SideBar, VideoModal } from "@/common";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const Movies = lazy(() => import("./pages/Movies"));
@@ -13,11 +15,12 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const App = () => {
   return (
     <>
+      <ToastContainer />
       <VideoModal />
       <SideBar />
       <Header />
       <main className="bg-black lg:pb-14 md:pb-4 sm:pb-2 xs:pb-1 pb-0  w-screen h-screen">
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense>
           <Routes>
             <Route path="/" element={<Movies />} />
             <Route path="/details/:id" element={<Details />} />

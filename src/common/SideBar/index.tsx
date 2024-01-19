@@ -7,7 +7,6 @@ import { useGlobalContext } from "@/context/globalContext";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useMotion } from "@/hooks/useMotion";
 import { navLinks } from "@/constants";
-import { INavLink } from "@/types";
 import { cn } from "@/utils/helper";
 
 const SideBar: React.FC = () => {
@@ -35,7 +34,7 @@ const SideBar: React.FC = () => {
         >
           <div className="p-4 sm:pt-8  xs:pt-6 pt-[22px] h-full flex flex-col">
             <ul className="flex flex-col sm:gap-2 xs:gap-[6px] gap-1 capitalize xs:text-[14px] text-[13.5px] font-medium">
-              {navLinks.map((link: INavLink) => {
+              {navLinks.map(link => {
                 return (
                   <SidebarNavItem
                     link={link}

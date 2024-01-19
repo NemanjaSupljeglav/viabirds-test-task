@@ -1,7 +1,3 @@
-export interface INavLink extends ITheme {
-  path: { title: string };
-}
-
 export interface IMovie {
   id: string;
   poster_path: string;

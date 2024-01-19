@@ -53,7 +53,7 @@ export const SkelatonLoader: FC<SkelatonLoaderProps> = memo(
 export const Loader = memo(() => {
   return (
     <div className="relative bg-black  top-0 left-0 w-screen h-screen flex justify-center items-center">
-      {/*  <div className="loader" /> */}
+      <div className="loader" />
     </div>
   );
 });

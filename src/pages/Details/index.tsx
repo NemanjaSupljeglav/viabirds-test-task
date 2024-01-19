@@ -20,7 +20,7 @@ const Detail = () => {
   } = useGetMovieQuery({
     id: Number(id)
   });
-  const { addFavoriteMovie, removeFavoriteMovie, favoriteMovies } =
+  const { addFavoriteMovie, removeFavoriteMovie, favoriteMovies, user } =
     useGlobalContext();
   let isFavorite = favoriteMovies.some(movie => movie.id == id);
 
@@ -53,7 +53,7 @@ const Detail = () => {
   const handleRemoveFavorite = () => {
     removeFavoriteMovie(Number(movie.id));
   };
-  console.log("handleAddFavorite", isFavorite);
+
   return (
     <>
       <section className="w-full" style={backgroundStyle}>
@@ -80,11 +80,12 @@ const Detail = () => {
             <p className={paragraph}>
               <span>{overview}</span>
             </p>
-            <Button
-              title={isFavorite ? "Remove from favorite" : "Add to favorite"}
-              className=""
-              onClick={isFavorite ? handleRemoveFavorite : handleAddFavorite}
-            />
+            {user && (
+              <Button
+                title={isFavorite ? "Remove from favorite" : "Add to favorite"}
+                onClick={isFavorite ? handleRemoveFavorite : handleAddFavorite}
+              />
+            )}
 
             <Casts casts={credits?.cast || []} />
           </div>

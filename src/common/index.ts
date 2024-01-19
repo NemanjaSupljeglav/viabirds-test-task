@@ -1,4 +1,3 @@
-import Footer from "./Footer";
 import Header from "./Header";
 import SideBar from "./SideBar";
 import { SkelatonLoader, Loader } from "./Loader";
@@ -8,9 +7,9 @@ import Error from "./Error";
 import VideoModal from "./VideoModal";
 import Input from "./Input";
 import Button from "./Button";
+import Overlay from "./Overlay";
 
 export {
-  Footer,
   Header,
   SideBar,
   SkelatonLoader,
@@ -20,5 +19,6 @@ export {
   Error,
   VideoModal,
   Input,
-  Button
+  Button,
+  Overlay
 };

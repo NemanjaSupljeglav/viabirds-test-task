@@ -1,7 +1,6 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import { FaYoutube, FaStar } from "react-icons/fa";
-import { BsBookmarkCheckFill, BsBookmarkDash } from "react-icons/bs";
 
 import Image from "@/common/Image";
 import { useGlobalContext } from "@/context/globalContext";

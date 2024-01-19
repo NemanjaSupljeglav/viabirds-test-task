@@ -1,5 +1,4 @@
 import { memo, FC } from "react";
-import { m } from "framer-motion";
 import { useMediaQuery } from "usehooks-ts";
 
 import Image from "@/common/Image";

@@ -13,8 +13,8 @@ const SidebarNavItem = ({ link, closeSideBar }: SidebarNavItemProps) => {
         to={link.path}
         className={({ isActive }) => {
           return cn(
-            "flex flex-row gap-3 py-1 rounded-md px-[10px] items-center w-full text-primary  transition-all duration-300 font-nunito font-semibold ",
-            isActive && "text-[red] "
+            "flex flex-row gap-3 py-1 rounded-md px-[10px] items-center w-full text-[#848387]  transition-all duration-300 font-nunito font-semibold ",
+            isActive && "text-primary"
           );
         }}
         onClick={closeSideBar}
@@ -27,3 +27,4 @@ const SidebarNavItem = ({ link, closeSideBar }: SidebarNavItemProps) => {
 };
 
 export default SidebarNavItem;
+//bg-[#302d3a] text-primary focus:bg-[#474550]

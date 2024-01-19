@@ -22,7 +22,8 @@ module.exports = {
         mainColor: "#fefefe",
         secondaryColor: "#F0F0F0",
         blackOverlay: "rgba(0, 0 ,0 ,0.3)",
-        warning: "rgba(252, 104, 104,0.1)"
+        warning: "rgba(252, 104, 104,0.1)",
+        warningBackground: "rgba(252, 104, 104,0.5)",
       },
       boxShadow: {
         glow: "0 0 18px rgb(255, 0, 0, 0.7);",
