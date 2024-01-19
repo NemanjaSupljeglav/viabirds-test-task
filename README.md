@@ -1,8 +1,3 @@
-<div align="center" >
-  <br/>
-
-  <br/>
-
   <p >
 This is a simple movie application built with React JS, Typescript, and Tailwind CSS, <br/> which allows users to search and view  movies.
   </p>
