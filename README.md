@@ -5,7 +5,6 @@ Welcome to the Movie Explorer app documentation! This application is built using
   </p>
 
 <br/>
-<br/>
 
 ## Features
 
