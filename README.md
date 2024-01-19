@@ -77,4 +77,4 @@ This will start the development server and open the movie application in your de
 
 This demo is for exploration purposes only and does not store any real user data. The information you enter, including account details and favorite movies, is temporary and will not persist between sessions. Enjoy your exploration of the Movie Explorer app!
 
-URL: <a href="https://link/">View Demo</a>
+URL: <a href="[https://link/](https://viabirds-test-task.vercel.app/)">View Demo</a>
