@@ -1,8 +1,13 @@
   <h1>ViaBirds Movies</h1>
   
   <p >
-Welcome to the Movie Explorer app documentation! This application is built using React with TypeScript, Tailwind CSS, and Vite. The Movie Explorer allows users to search for movies, filter them based on their ratings, view detailed information, and even watch trailers. Additionally, users can create accounts locally and add their favorite movies to a personalized favorites list.
+Welcome to the Movie Explorer app documentation! This application is built using React with TypeScript, Tailwind CSS, and Vite. The Movie Explorer allows users to search for movies, filter them based on their ratings, view detailed information, and even watch trailers. Additionally, users can create accounts locally and add their favorite movies to a personalized favorites list. This project was created as a demonstration of my skills and proficiency in building modern web applications. I utilized a template found on the internet as a foundation, customizing it to meet the specific requirements of the Movie Explorer app. This serves as a testament to my ability to adapt and extend existing codebases to create robust and feature-rich applications.
+
   </p>
+## Features
+
+1. **Sources**
+   https://github.com/sudeepmahato16/movie-app
 
 <br/>
 
