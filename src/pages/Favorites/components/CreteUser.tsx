@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { useState } from "react";
 
 import { Button, Input } from "@/common";
 import { useGlobalContext } from "@/context/globalContext";
@@ -42,4 +42,4 @@ const MovieCard = () => {
   );
 };
 
-export default memo(MovieCard);
+export default MovieCard;

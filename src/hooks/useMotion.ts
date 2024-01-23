@@ -1,9 +1,6 @@
-import { useCallback, useMemo } from "react";
-import { useMediaQuery } from "usehooks-ts";
+import { useCallback } from "react";
 
 export const useMotion = () => {
-  const isMiniScreen = useMediaQuery("(max-width: 768px)");
-
   const zoomIn = useCallback(
     (scale: number, duration: number) => ({
       hidden: {
@@ -11,87 +8,19 @@ export const useMotion = () => {
         scale,
         transition: {
           duration,
-          ease: "easeInOut",
-        },
+          ease: "easeInOut"
+        }
       },
       show: {
         opacity: 1,
         scale: 1,
         transition: {
           duration,
-          ease: "easeInOut",
-        },
-      },
+          ease: "easeInOut"
+        }
+      }
     }),
     []
-  );
-
-  const staggerContainer = useCallback(
-    (staggerChildren: number, delayChildren: number) =>
-      isMiniScreen
-        ? undefined
-        : {
-            hidden: {
-              opacity: 0,
-            },
-            show: {
-              opacity: 1,
-              transition: {
-                staggerChildren,
-                delayChildren,
-              },
-            },
-          },
-    [isMiniScreen]
-  );
-
-  const fadeDown = useMemo(
-    () =>
-      isMiniScreen
-        ? undefined
-        : {
-            hidden: {
-              y: -25,
-              opacity: 0,
-            },
-            show: {
-              y: 0,
-              opacity: 1,
-              transition: {
-                duration: 0.5,
-                ease: "easeOut",
-                type: "tween",
-                opacity: {
-                  duration: 0.625,
-                },
-              },
-            },
-          },
-    [isMiniScreen]
-  );
-
-  const fadeUp = useMemo(
-    () =>
-      isMiniScreen
-        ? undefined
-        : {
-            hidden: {
-              y: 50,
-              x: 50,
-              opacity: 0,
-            },
-            show: {
-              y: 0,
-              x: 0,
-              opacity: 1,
-              transition: {
-                duration: 0.4,
-                ease: "easeOut",
-                type: "tween",
-              },
-            },
-          },
-    [isMiniScreen]
   );
 
   const slideIn = useCallback(
@@ -101,8 +30,8 @@ export const useMotion = () => {
         y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
         transition: {
           duration,
-          ease: "easeInOut",
-        },
+          ease: "easeInOut"
+        }
       },
       show: {
         x: 0,
@@ -111,18 +40,15 @@ export const useMotion = () => {
           type,
           delay,
           duration,
-          ease: "easeInOut",
-        },
-      },
+          ease: "easeInOut"
+        }
+      }
     }),
     []
   );
 
   return {
     zoomIn,
-    fadeDown,
-    fadeUp,
-    staggerContainer,
-    slideIn,
+    slideIn
   };
 };
