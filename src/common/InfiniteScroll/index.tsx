@@ -37,7 +37,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   return (
     <div
       ref={containerRef}
-      className={cn(`h-[1500px]  overflow-y-auto`, className)}
+      className={cn(`h-[100%]  overflow-y-auto`, className)}
     >
       {children}
     </div>

@@ -27,6 +27,7 @@ const Movies = () => {
 
   useEffect(() => {
     setSearch("");
+    setPage(1);
   }, [rangeFrom, rangeTo]);
 
   useEffect(() => {
